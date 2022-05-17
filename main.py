@@ -2,9 +2,9 @@ from display import display
 
 def main():
     #Create a window object
-    window = display()
-    window.drawInterface()
-    window.window.mainloop()
+    display1 = display()
+    display1.drawInterface()
+    display1.window.mainloop()
 
 if __name__ == "__main__":
     main()
