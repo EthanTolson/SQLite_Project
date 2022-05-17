@@ -1,9 +1,10 @@
 import sqlite3 as sql
+from os import path
 
 class databaseCreation:
 
     def __init__(self):
-        self.databse_connection = sql.connect('database1.db')
+        self.databse_connection = sql.connect(f'{path.dirname(path.abspath(__file__))}/database1.db')
         self.cursor = self.databse_connection.cursor()
 
     def createTable(self, table_name, column_names = None, column_types = None):
