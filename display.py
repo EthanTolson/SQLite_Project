@@ -171,6 +171,7 @@ class display():
         self.label20.grid(row=9,column=4,padx=10, pady=10)
     
     def checkTableName(self):
+        #checks if the user has entered a table name
         if(len(self.entry1.get()) <= 0):
             self.label1.destroy()
             self.label1 = tk.Label(text = "Please Enter Table Name.")
@@ -179,7 +180,8 @@ class display():
         return True
 
     def createTable(self):
-        #creates table 
+        #creates table entries 2 - 6 are column names
+        #table must have at least 1 column
         if(not self.checkTableName()):
             return
 
@@ -205,19 +207,21 @@ class display():
         if(len(self.entry6.get())): 
             column_names.append(self.entry6.get())
             column_types.append(self.clicked5.get())
-
+        #prints if the creation was successful
         self.label1.destroy()
         self.label1 = tk.Label(text = self.data.createTable(self.entry1.get(), column_names, column_types))
         self.label1.grid(row=0,rowspan=8,column=7,padx=10, pady=10)
         
 
     def addToTable(self):
+        # adds rows to the table 
+        # must have all required fields filled out
         if(not self.checkTableName()):
             return
 
         values = []
         value_types = []
-
+        #entries 7 -11 are for entering column values
         if(len(self.entry7.get())): 
             values.append(self.entry7.get())
             value_types.append(self.clicked1.get())
@@ -237,23 +241,23 @@ class display():
         if(len(self.entry11.get())): 
             values.append(self.entry11.get())
             value_types.append(self.clicked5.get())
-
-        
+        #prints status of add item
         self.label1.destroy()
         self.label1 = tk.Label(text = self.data.addItem(self.entry1.get(), values, value_types))
         self.label1.grid(row=0,rowspan=8,column=7,padx=10, pady=10)
 
     def displayTable(self):
+        #displays all elements of a selected table
         if(not self.checkTableName()):
             return
-
+        #use try except to stop error from invalid tablenames
         try:
             self.label8.destroy()
             self.label9.destroy()
             self.label10.destroy()
             self.label11.destroy()
             self.label12.destroy()
-
+            # should print out column names before row values
             data = self.data.cursor.execute(f"SELECT * FROM {self.entry1.get()}")
             i = 0
             for column in data.description:
@@ -296,22 +300,26 @@ class display():
                 
                 i+=1
         except:
+            #prints error if user enterd table name that does not exist
             self.label1.destroy()
             self.label1 = tk.Label(text = "Please Enter Valid Table Name.")
             self.label1.grid(row=0,rowspan=8,column=7,padx=10, pady=10)
             return
-
+        # displays actual column values
         self.label1.destroy()
         self.label1 = tk.Label(text=self.data.displayTable(self.entry1.get()))
         self.label1.grid(row=0,rowspan=8,column=7,padx=10, pady=10)
 
     def displayAllTables(self):
+        #displays a list of all tables in the database
         self.label1.destroy()
         self.label1 = tk.Label(text=self.data.display_table_names())
         self.label1.grid(row=0,rowspan=8,column=7,padx=10, pady=10)
         return
 
-    def delete_table(self):
+    def delete_table(self):\
+        # deletes table if it exists in database
+        # need to add something to prevent anyone from deleting any table
         if(not self.checkTableName()):
             return
         self.label1.destroy()
@@ -319,6 +327,7 @@ class display():
         self.label1.grid(row=0,rowspan=8,column=7,padx=10, pady=10)
 
     def getFromTable(self):
+        #select all rows where some condition is met
         if(not self.checkTableName()):
             return
         self.label1.destroy()
@@ -327,6 +336,7 @@ class display():
         pass
 
     def editTable(self):
+        #edit a row(s) from a table 
         if(not self.checkTableName()):
             return
         self.label1.destroy()
@@ -334,6 +344,7 @@ class display():
         self.label1.grid(row=0,rowspan=8,column=7,padx=10, pady=10)
 
     def deleteFromTable(self):
+        #delete a row(s) from a table
         if(not self.checkTableName()):
             return
         self.label1.destroy()
