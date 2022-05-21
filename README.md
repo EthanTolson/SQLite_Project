@@ -1,12 +1,15 @@
 # Overview
 
-{Talk about what you are trying to accomplish as a software engineer to further your learning.}
 
-{Provide a description the software that you wrote and how it integrates with a SQL Relational Database. Describe how to use your program.}
+For the past two weeks I have been learning how to use SQL commands in python using the SQLite library. 
+I learned SQL through MySQLWorkbench and wanted to learn how to exzecute SQL commands in Python.
 
-{Describe your purpose for writing this software.}
+I wrote a program that allows someone who does not know SQL to create, edit, add to, and drop tables in a database. 
+My program starts a window using TKinter and has intructions on how to use it built in.
+You simply enter data into the various entry fields and press buttons to execute commands.
 
-{Provide a link to your YouTube demonstration.  It should be a 4-5 minute demo of the software running, a walkthrough of the code, and a view of how created the Relational Database.}
+I wanted to challenge myself by combining two concepts that I have learned as well as learning about Tkinter as a GUI building tool.
+I also wanted to create something similar to MySQL workbench that allows someone who has no knowledge of SQL to interact with a database.
 
 [Software Demo Video](http://youtube.link.goes.here)
 
@@ -31,5 +34,5 @@ Libraries: SQLlite, tkinter
 
 # Future Work
 
-* Fix the change item function to force types
+* Fix the change item function to force types as SQLite does not do this automatically
 * Add ability to join tables
