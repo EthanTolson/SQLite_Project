@@ -170,12 +170,17 @@ class display():
         self.label19.grid(row=9,column=2,padx=10, pady=10)
         self.label20.grid(row=9,column=4,padx=10, pady=10)
     
-    def createTable(self):
-        #creates table 
+    def checkTableName(self):
         if(len(self.entry1.get()) <= 0):
             self.label1.destroy()
             self.label1 = tk.Label(text = "Please Enter Table Name.")
-            self.label1.grid(row=0, rowspan= 8,column=7,padx=10, pady=10)
+            self.label1.grid(row=0, rowspan=8, column=7, padx=10, pady=10)
+            return False
+        return True
+
+    def createTable(self):
+        #creates table 
+        if(not self.checkTableName()):
             return
 
         column_names = []
@@ -207,10 +212,7 @@ class display():
         
 
     def addToTable(self):
-        if(len(self.entry1.get()) <= 0):
-            self.label1.destroy()
-            self.label1 = tk.Label(text = "Please Enter Table Name.")
-            self.label1.grid(row=0,rowspan=8,column=7,padx=10, pady=10)
+        if(not self.checkTableName()):
             return
 
         values = []
@@ -242,10 +244,7 @@ class display():
         self.label1.grid(row=0,rowspan=8,column=7,padx=10, pady=10)
 
     def displayTable(self):
-        if(len(self.entry1.get()) <= 0):
-            self.label1.destroy()
-            self.label1 = tk.Label(text = "Please Enter Table Name.")
-            self.label1.grid(row=0,rowspan=8,column=7,padx=10, pady=10)
+        if(not self.checkTableName()):
             return
 
         try:
@@ -313,20 +312,14 @@ class display():
         return
 
     def delete_table(self):
-        if(len(self.entry1.get()) <= 0):
-            self.label1.destroy()
-            self.label1 = tk.Label(text = "Please Enter Table Name.")
-            self.label1.grid(row=0,rowspan=8,column=7,padx=10, pady=10)
+        if(not self.checkTableName()):
             return
         self.label1.destroy()
         self.label1 = tk.Label(text=self.data.delete_table(self.entry1.get()))
         self.label1.grid(row=0,rowspan=8,column=7,padx=10, pady=10)
 
     def getFromTable(self):
-        if(len(self.entry1.get()) <= 0):
-            self.label1.destroy()
-            self.label1 = tk.Label(text = "Please Enter Table Name.")
-            self.label1.grid(row=0,rowspan=8,column=7,padx=10, pady=10)
+        if(not self.checkTableName()):
             return
         self.label1.destroy()
         self.label1 = tk.Label(text=self.data.displayItem(self.entry1.get(), self.entry16.get(), self.entry17.get()))
@@ -334,20 +327,14 @@ class display():
         pass
 
     def editTable(self):
-        if(len(self.entry1.get()) <= 0):
-            self.label1.destroy()
-            self.label1 = tk.Label(text = "Please Enter Table Name.")
-            self.label1.grid(row=0,rowspan=8,column=7,padx=10, pady=10)
+        if(not self.checkTableName()):
             return
         self.label1.destroy()
         self.label1 = tk.Label(text=self.data.editItem(self.entry1.get(),self.entry12.get(), self.entry13.get(), self.entry14.get(), self.entry15.get()))
         self.label1.grid(row=0,rowspan=8,column=7,padx=10, pady=10)
 
     def deleteFromTable(self):
-        if(len(self.entry1.get()) <= 0):
-            self.label1.destroy()
-            self.label1 = tk.Label(text = "Please Enter Table Name.")
-            self.label1.grid(row=0,rowspan=8,column=7,padx=10, pady=10)
+        if(not self.checkTableName()):
             return
         self.label1.destroy()
         self.label1 = tk.Label(text=self.data.removeItem(self.entry1.get(), self.entry18.get(), self.entry19.get()))
