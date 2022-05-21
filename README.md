@@ -11,7 +11,7 @@ You simply enter data into the various entry fields and press buttons to execute
 I wanted to challenge myself by combining two concepts that I have learned as well as learning about Tkinter as a GUI building tool.
 I also wanted to create something similar to MySQL workbench that allows someone who has no knowledge of SQL to interact with a database.
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://youtu.be/DzwGIBX9Elo)
 
 # Relational Database
 
